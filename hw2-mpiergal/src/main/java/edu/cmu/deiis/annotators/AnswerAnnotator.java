@@ -15,7 +15,7 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.JCas;
 import edu.cmu.deiis.types.*;
 
-//Annotator that identifies tokens using Java regular expressions
+//Annotator that identifies answers using Java regular expressions
 
 public class AnswerAnnotator extends JCasAnnotator_ImplBase {
 //create regular expression pattern for questions
@@ -40,10 +40,10 @@ public class AnswerAnnotator extends JCasAnnotator_ImplBase {
    // make matchers for different NGrams
    Matcher ansMatch = answerPattern.matcher(docText);
    
-   //iterate over question matches in text
+   //iterate over answer matches in text
    int pos = 0;
    while (ansMatch.find(pos)) {
-     //found a question, create question annotation
+     //found an answer, create answer annotation
      Answer answer = new Answer(aJCas);
      answer.setBegin(ansMatch.start());
      answer.setEnd(ansMatch.end()+1);

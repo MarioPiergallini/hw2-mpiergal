@@ -15,7 +15,7 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.JCas;
 import edu.cmu.deiis.types.*;
 
-//Annotator that identifies tokens using Java regular expressions
+//Annotator that identifies questions using Java regular expressions
 
 public class QuestionAnnotator extends JCasAnnotator_ImplBase {
 //create regular expression pattern for questions

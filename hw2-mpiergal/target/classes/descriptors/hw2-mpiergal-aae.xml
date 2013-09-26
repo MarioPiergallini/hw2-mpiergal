@@ -35,6 +35,9 @@
     <delegateAnalysisEngine key="AnswerAnnotator">
       <import name="descriptors.AnswerAnnotator"/>
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="AnswerScoreAnnotator">
+      <import name="descriptors.AnswerScoreAnnotator"/>
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
 		<name>HW2 Aggregate Analysis Engine</name>
@@ -50,6 +53,7 @@
         <node>NGramAnnotator</node>
         <node>QuestionAnnotator</node>
         <node>AnswerAnnotator</node>
+      <node>AnswerScoreAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <typePriorities/>
@@ -63,6 +67,7 @@
           <type allAnnotatorFeatures="true">edu.cmu.deiis.types.NGram</type>
           <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Question</type>
           <type allAnnotatorFeatures="true">edu.cmu.deiis.types.Answer</type>
+        <type allAnnotatorFeatures="true">edu.cmu.deiis.types.AnswerScore</type>
         </outputs>
         <languagesSupported/>
       </capability>

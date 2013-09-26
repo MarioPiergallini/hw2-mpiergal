@@ -19,7 +19,7 @@
 	 * under the License.
 	 ***************************************************************
    -->
-<!-- Descriptor for the DEIIS homework 2 Question Annotator. -->
+<!-- Descriptor for the DEIIS homework 2 Answer Annotator. -->
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
 	<frameworkImplementation>org.apache.uima.java</frameworkImplementation>
 	<primitive>true</primitive>
