@@ -4,6 +4,8 @@
 
 package edu.cmu.deiis.annotators;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Iterator;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
@@ -15,6 +17,8 @@ import edu.cmu.deiis.types.*;
 
 public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
  
+ private Pattern negPattern = Pattern.compile("n't\\b|\\bnot?\\b|\\bnever|no(where|thing|body)");
+  
  public void process(JCas aJCas) {
    
    System.out.println("Answer score annotator called");
@@ -50,7 +54,7 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
        for(int j=0;j<ans.getUnigrams().size();j++){
          NGram qUni = question.getUnigrams(i);
          NGram ansUni = ans.getUnigrams(j);
-         if (ansUni.getCoveredText()==qUni.getCoveredText()){
+         if (ansUni.getCoveredText().equals(qUni.getCoveredText())){
            System.out.println("UniMatch: " + ansUni.getCoveredText());
            uniMatches++;
          }
@@ -64,7 +68,7 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
        for(int j=0;j<ans.getBigrams().size();j++){
          NGram qBi = question.getBigrams(i);
          NGram ansBi = ans.getBigrams(j);
-         if (ansBi.getCoveredText()==qBi.getCoveredText()){
+         if (ansBi.getCoveredText().equals(qBi.getCoveredText())){
            System.out.println("BiMatch: " + ansBi.getCoveredText());
            biMatches++;
          }
@@ -78,14 +82,26 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
        for(int j=0;j<ans.getTrigrams().size();j++){
          NGram qTri = question.getTrigrams(i);
          NGram ansTri = ans.getTrigrams(j);
-         if (ansTri.getCoveredText()==qTri.getCoveredText()){
+         if (ansTri.getCoveredText().equals(qTri.getCoveredText())){
            System.out.println("TriMatch: " + ansTri.getCoveredText());
            triMatches++;
          }
        }
      }
      int numQGrams = numQUni + numQBi + numQTri;
-     double s = (uniMatches + biMatches + triMatches)/numQGrams;
+     int allMatches = uniMatches + biMatches + triMatches;
+     double negPenalty = 1.0;
+     
+     String ansText = ans.getCoveredText();
+     // make matcher for negation
+     Matcher negMatch = negPattern.matcher(ansText);
+     //check if the answer is a negative sentence and penalize it if so
+     if (negMatch.find()){
+       negPenalty = 0.25;
+       System.out.println("Penalty! Negative sentence.");
+     }
+     
+     double s = negPenalty*(double)allMatches/(double)numQGrams;
      System.out.println("Score: " + s + " out of " + numQGrams);
      System.out.println();
      
