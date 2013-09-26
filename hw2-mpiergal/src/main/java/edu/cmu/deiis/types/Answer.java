@@ -13,8 +13,8 @@ import org.apache.uima.jcas.cas.FSArray;
 
 
 /** 
- * Updated by JCasGen Thu Sep 26 04:54:13 EDT 2013
- * XML source: C:/Users/Mario/Git/hw2-mpiergal/hw2-mpiergal/src/main/resources/descriptors/deiis_types.xml
+ * Updated by JCasGen Thu Sep 26 05:26:03 EDT 2013
+ * XML source: C:/Users/Mario/git/hw2-mpiergal/hw2-mpiergal/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class Answer extends Annotation {
   /** @generated
