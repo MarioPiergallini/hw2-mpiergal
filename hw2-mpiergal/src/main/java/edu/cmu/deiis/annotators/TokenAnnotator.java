@@ -18,9 +18,7 @@ public class TokenAnnotator extends JCasAnnotator_ImplBase {
  private Pattern tokenPattern = Pattern.compile("(?<!(\\A|\\n(A )?))[\\w']+");
 
  public void process(JCas aJCas) {
-   
-   System.out.println("TokenAnnotator called");
-   
+     
    // get document text from JCas
    String docText = aJCas.getDocumentText();
    

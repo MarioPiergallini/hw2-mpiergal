@@ -24,8 +24,6 @@ public class NGramAnnotator extends JCasAnnotator_ImplBase {
 
  public void process(JCas aJCas) {
    
-   System.out.println("NGram annotator called");
-   
    //load tokens into an ArrayList
    FSIndex tokenIndex = aJCas.getAnnotationIndex(Token.type);
    Iterator tokenIter = tokenIndex.iterator();

@@ -102,7 +102,7 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
      }
      
      double s = negPenalty*(double)allMatches/(double)numQGrams;
-     System.out.println("Score: " + s + " out of " + numQGrams);
+     System.out.println("Unweighted Score: " + (s*100) + "% out of " + numQGrams);
      System.out.println();
      
      score.setScore(s);

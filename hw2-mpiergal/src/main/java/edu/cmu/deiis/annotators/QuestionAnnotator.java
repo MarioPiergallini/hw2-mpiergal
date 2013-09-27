@@ -23,8 +23,6 @@ public class QuestionAnnotator extends JCasAnnotator_ImplBase {
 
  public void process(JCas aJCas) {
    
-   System.out.println("Question annotator called");
-   
    // get document text from JCas
    String docText = aJCas.getDocumentText();
    

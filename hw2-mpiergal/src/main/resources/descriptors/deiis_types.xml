@@ -123,5 +123,17 @@
         </featureDescription>
       </features>
     </typeDescription>
+  <typeDescription>
+      <name>edu.cmu.deiis.types.Evaluation</name>
+      <description>Evaluation of the answer scoring with precision at N.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>precisionAtN</name>
+          <description>The precision at the top N ranked answers, where N is the number of correct answers in the gold standard annotation.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
   </types>
 </typeSystemDescription>
