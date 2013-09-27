@@ -18,8 +18,6 @@ public class EvaluationAnnotator extends JCasAnnotator_ImplBase {
   
  public void process(JCas aJCas) {
    
-   System.out.println("Evaluation annotator called");
-   
    Evaluation eval = new Evaluation(aJCas);
    
    //get answer iterator, initialize counts
@@ -53,7 +51,7 @@ public class EvaluationAnnotator extends JCasAnnotator_ImplBase {
      }
      //add to count of top answers correct at N
      if (goldStd.get(bestIndex)) {correctAtN++;}
-     System.out.println("Score " + (i+1) + ": " + scores.get(bestIndex) + " is " + goldStd.get(bestIndex));
+     System.out.println("Score ranked " + (i+1) + ": " + scores.get(bestIndex) + " is " + goldStd.get(bestIndex));
      //remove best answer from ArrayLists
      scores.remove(bestIndex);
      goldStd.remove(bestIndex);
