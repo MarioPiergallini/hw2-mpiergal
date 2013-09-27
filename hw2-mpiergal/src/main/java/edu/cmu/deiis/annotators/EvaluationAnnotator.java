@@ -39,36 +39,46 @@ public class EvaluationAnnotator extends JCasAnnotator_ImplBase {
    int n = numCorrect;
    System.out.println("There are " + n + " correct answers.");
    //grab top N scores, N=numCorrect
-   double bestScore = -1;
-   double secondBest = -1;
-   int bestIndex = 0;
    int correctAtN = 0;
+   double bestScore = -1;
    for(int i=0;i<n;i++){
+     bestScore = 0;
+     int bestIndex = 0;
      //iterate through scores to grab best one
      for(int j=0;j<scores.size();j++){
        if (scores.get(j)>bestScore) {
-         secondBest = bestScore;
          bestScore = scores.get(j);
          bestIndex = j;
-       } else if (scores.get(j)>secondBest) {
-         secondBest = scores.get(j);
-       }
+       } 
      }
      //add to count of top answers correct at N
      if (goldStd.get(bestIndex)) {correctAtN++;}
      System.out.println("Score " + (i+1) + ": " + scores.get(bestIndex) + " is " + goldStd.get(bestIndex));
-     //second best is new best for next iteration
-     bestScore = secondBest;
-     secondBest = -1;
      //remove best answer from ArrayLists
      scores.remove(bestIndex);
      goldStd.remove(bestIndex);
-     bestIndex = 0;
    }
+   
+   //check for ties with Nth best score
+   for(int j=0;j<scores.size();j++){
+     if (scores.get(j)==bestScore) {
+       bestScore = scores.get(j);
+       //add to count of top answers correct at N
+       if (goldStd.get(j)) {correctAtN++;}
+       //increase n if there's a tie
+       n++;
+     } 
+   }
+   
+   if (n>numCorrect) {System.out.println("There was a tie.");}
    
    //calculate and set precision
    double precis = (double)correctAtN/(double)n;
    System.out.println("Precision at N=" + n + " is " + precis);
+   System.out.println();
+   //set eval values
+   eval.setBegin(0);
+   eval.setEnd(1);
    eval.setPrecisionAtN(precis);
    eval.addToIndexes();
  }
