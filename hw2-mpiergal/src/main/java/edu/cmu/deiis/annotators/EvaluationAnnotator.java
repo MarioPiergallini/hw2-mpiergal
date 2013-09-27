@@ -1,4 +1,7 @@
-/* AnswerAnnotator.java
+/** EvaluationAnnotator.java
+ *  This ranks answers by their scores, and then calculates precision at N, where
+ *  N=number of correct answers according to the gold standard annotation. 
+ *  This precision is then annotated on the question Q.
  *  @author Mario Piergallini
  */
 

@@ -1,4 +1,9 @@
-/* NGramAnnotator.java
+/** NGramAnnotator.java
+ *  This annotates all the unigrams, bigrams and trigrams
+ *  in the JCas. Unigrams are equivalent to tokens in this
+ *  case. Bigrams and trigrams are detected using a regular
+ *  expression that finds words separated only by spaces,
+ *  commas, colons or semicolons.
  *  @author Mario Piergallini
  */
 
@@ -19,8 +24,8 @@ import edu.cmu.deiis.types.*;
 
 public class NGramAnnotator extends JCasAnnotator_ImplBase {
 //create regular expression pattern for bigrams and trigrams
- private Pattern bigramPattern = Pattern.compile("(?<!(\\A|\\n(A )?))[\\w']+ [\\w']+");
- private Pattern trigramPattern = Pattern.compile("(?<!(\\A|\\n(A )?))[\\w']+ [\\w']+ [\\w']+");
+ private Pattern bigramPattern = Pattern.compile("(?<!(\\A|\\n(A )?))[\\w']+ ?[,;:]? [\\w']+");
+ private Pattern trigramPattern = Pattern.compile("(?<!(\\A|\\n(A )?))[\\w']+ ?[,;:]? [\\w']+ ?[,;:]? [\\w']+");
 
  public void process(JCas aJCas) {
    

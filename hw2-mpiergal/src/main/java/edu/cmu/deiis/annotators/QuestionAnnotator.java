@@ -1,4 +1,6 @@
-/* QuestionAnnotator.java
+/** QuestionAnnotator.java
+ *  This annotator simply marks the question in the JCas
+ *  and associates it with the NGrams contained within it.
  *  @author Mario Piergallini
  */
 

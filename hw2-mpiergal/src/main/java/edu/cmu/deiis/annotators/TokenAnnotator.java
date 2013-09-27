@@ -1,4 +1,8 @@
-/* TokenAnnotator.java
+/** TokenAnnotator.java
+ *  Annotates word tokens within the JCas. Words are considered
+ *  to be any sequence of alphanumeric characters or apostrophes.
+ *  The regular expression excludes the Q and A annotations at the
+ *  beginning of each line, so they are not annotated as tokens. 
  *  @author Mario Piergallini
  */
 

@@ -1,4 +1,9 @@
-/* AnswerAnnotator.java
+/** AnswerScoreAnnotator.java
+ *  This goes through the answers in the JCas and compares them
+ *  to the question. They are scored according to the number of
+ *  NGrams in the question that are matched by NGrams in the answer.
+ *  If the answer has a negation in it, it is heavily penalized.
+ *  Answers are then annotated with this score.
  *  @author Mario Piergallini
  */
 

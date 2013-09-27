@@ -1,4 +1,8 @@
-/* AnswerAnnotator.java
+/** AnswerAnnotator.java
+ *  This annotator simply marks the answers in the JCas
+ *  and associates them with the NGrams contained within
+ *  them. It also reads the gold standard isCorrect annotation
+ *  and sets that feature.
  *  @author Mario Piergallini
  */
 
